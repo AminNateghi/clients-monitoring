@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Clients {
+  id       Int     @id @default(autoincrement())
+  url      String  @unique
+  port     Int     @default(80)
+  title    String
+  isActive Boolean @default(false)
+
+  histories History[]
+}
+
+model History {
+  id               Int      @id @default(autoincrement())
+  clientId         Int
+  status           Boolean
+  insertedDateTime DateTime
+
+  url Clients? @relation(fields: [clientId], references: [id])
+}
