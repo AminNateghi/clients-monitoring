@@ -1,8 +1,8 @@
-import { Controller, Get, HttpCode, HttpStatus, Res } from '@nestjs/common';
+import { Controller, Get, HttpStatus, Res } from '@nestjs/common';
 import { Response } from 'express';
 import { ReportService } from './report.service';
 
-@Controller('report')
+@Controller('reports')
 export class ReportController {
 
   constructor(

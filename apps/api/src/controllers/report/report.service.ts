@@ -25,10 +25,7 @@ export class ReportService {
             insertedDateTime: "asc"
           }
         },
-      },
-      where: {
-        id: 18
-      },
+      }
     });
   }
 }
