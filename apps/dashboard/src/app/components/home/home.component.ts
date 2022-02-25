@@ -9,6 +9,8 @@ import { ClientDTO } from '@dashboard/api-interfaces';
 })
 export class HomeComponent implements OnInit {
 
+  refreshPageTimesByMinutes = 1;
+
   constructor(
     private clientsService: ClientsService
   ) { }
@@ -16,9 +18,22 @@ export class HomeComponent implements OnInit {
   data: ClientDTO[] = [];
 
   ngOnInit(): void {
+    this.getData();
+    this.setPageRefreshTimer();
+  }
+
+  getData() {
     this.clientsService.getClients().subscribe(data => {
       this.data = data;
     });
+    console.log(Date.now());
+
+  }
+
+  setPageRefreshTimer() {
+    setInterval(() => {
+      this.getData();
+    }, this.refreshPageTimesByMinutes * 60 * 1000);
   }
 
   customizeTooltip(arg: any) {
