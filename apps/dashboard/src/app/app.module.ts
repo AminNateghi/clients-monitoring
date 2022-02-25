@@ -6,21 +6,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainLayoutComponent } from './shared/modules/layouts/main-layout/main-layout.component';
 import { EmptyLayoutComponent } from './shared/modules/layouts/empty-layout/empty-layout.component';
-import { HeaderComponent } from './shared/modules/header/header.component';
 import { FooterComponent } from './shared/modules/footer/footer.component';
+import { HeaderModule } from './shared/modules/header/header.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainLayoutComponent,
     EmptyLayoutComponent,
-    HeaderComponent,
     FooterComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    HeaderModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
