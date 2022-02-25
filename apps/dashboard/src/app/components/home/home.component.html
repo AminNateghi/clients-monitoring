@@ -1,1 +1,22 @@
-<p>dashboard works!</p>
+<div class="dashboard">
+  <div *ngFor="let client of data">
+    <dx-chart class="chart" [dataSource]="client.histories">
+
+      <dxo-title [text]="client.title"></dxo-title>
+
+      <dxi-series
+      argumentField="createdAt"
+      valueField="isOffline"
+      name="Offline"
+      type="line">
+      </dxi-series>
+
+      <dxo-argument-axis argumentType="datetime">
+        <dxo-label wordWrap="none" [overlappingBehavior]="'rotate'" [format]="{ type: 'HH:mm' }"></dxo-label>
+      </dxo-argument-axis>
+
+      <dxo-tooltip [enabled]="true" [customizeTooltip]="customizeTooltip"></dxo-tooltip>
+      <dxo-legend [visible]="false"></dxo-legend>
+    </dx-chart>
+  </div>
+</div>
