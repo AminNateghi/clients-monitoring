@@ -13,16 +13,16 @@ export class ReportService {
         title: true,
         histories: {
           select: {
-            status: true,
-            insertedDateTime: true
+            isOffline: true,
+            createdAt: true
           },
           where: {
-            insertedDateTime: {
+            createdAt: {
               gte: new Date(new Date().setHours(1, 0, 0, 0))
             },
           },
           orderBy: {
-            insertedDateTime: "asc"
+            createdAt: "asc"
           }
         },
       }

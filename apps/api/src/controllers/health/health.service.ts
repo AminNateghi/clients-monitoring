@@ -41,18 +41,18 @@ export class HealthService {
     socket.connect(port, client.url);
 
     socket.on('connect', () => {
-      this.setHistory(client, port, true)
+      this.setHistory(client, false)
       socket.end();
     });
 
     socket.on('timeout', () => {
-      this.setHistory(client, port, false)
+      this.setHistory(client, true)
       socket.end();
       socket.destroy();
     });
 
     socket.on('error', () => {
-      this.setHistory(client, port, false)
+      this.setHistory(client, true)
     });
 
     socket.on('end', () => {
@@ -60,14 +60,13 @@ export class HealthService {
     });
   }
 
-  private setHistory(client: Clients, port: number, status: boolean) {
-    console.log(`${client.url}:${port} - ${status ? 'up' : 'down'}`);
+  private setHistory(client: Clients, isOffline: boolean) {
+    console.log(`[${Date.now()}] - ${client.url} - ${isOffline ? 'down' : 'up'}`);
 
     this.prisma.history.create({
       data: {
         clientId: client.id,
-        insertedDateTime: new Date(),
-        status,
+        isOffline: isOffline,
       }
     }).then(() => {
       this.prisma.$disconnect();
