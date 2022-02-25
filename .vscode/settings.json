@@ -1,6 +1,7 @@
 {
-    "cSpell.words": [
-        "nestjs"
-    ],
-    "editor.tabSize": 2
+  "cSpell.words": [
+    "devextreme",
+    "nestjs"
+  ],
+  "editor.tabSize": 2
 }
