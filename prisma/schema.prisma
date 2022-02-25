@@ -18,10 +18,10 @@ model Clients {
 }
 
 model History {
-  id               Int      @id @default(autoincrement())
-  clientId         Int
-  status           Boolean
-  insertedDateTime DateTime
+  id        Int       @id @default(autoincrement())
+  clientId  Int
+  isOffline Boolean   @default(false)
+  createdAt DateTime? @default(now())
 
   url Clients? @relation(fields: [clientId], references: [id])
 }

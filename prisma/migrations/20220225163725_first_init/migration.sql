@@ -13,8 +13,8 @@ CREATE TABLE "Clients" (
 CREATE TABLE "History" (
     "id" SERIAL NOT NULL,
     "clientId" INTEGER NOT NULL,
-    "status" BOOLEAN NOT NULL,
-    "insertedDateTime" TIMESTAMP(3) NOT NULL,
+    "isOffline" BOOLEAN NOT NULL DEFAULT false,
+    "createdAt" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "History_pkey" PRIMARY KEY ("id")
 );
